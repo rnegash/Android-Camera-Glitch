@@ -15,7 +15,7 @@ void setup() {
   gesture = new KetaiGesture(this);
 
   optionslist.add("Flash");
-  optionslist.add("Toggle");
+  optionslist.add("Toggle Camera On/off");
   optionslist.add("About");
 
   thread("alt1");
@@ -65,7 +65,7 @@ void onKetaiListSelection(KetaiList klist)
       cam.enableFlash();
     }
   }
-  else if (selection == "Toggle") {
+  else if (selection == "Toggle Camera On/off") {
     if (cam.isStarted())
     {
       cam.stop();
