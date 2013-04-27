@@ -18,8 +18,9 @@ void setup() {
   optionsList.add("Toggle Camera On/Off");
   optionsList.add("About");
 
-  thread("alt1");
-  thread("alt2");
+  thread("mode1");
+  thread("mode2");
+  thread("mode3");
   //cam.start();
 }
 int mode=3;
@@ -39,8 +40,7 @@ void draw() {
     break;
   }
 }
-void onLongPress(float x, float y)
-{
+void onLongPress(float x, float y) {
   mode=(int)random(1, 4);
   mode1inst=(int)random(13);
   mode2inst=(int)random(1000, 5000);
@@ -50,6 +50,7 @@ int s;
 void onTap(float x, float y) {
   save("//sdcard//DCIM/Test/"+s+++".png");
 }
+
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == MENU) {
