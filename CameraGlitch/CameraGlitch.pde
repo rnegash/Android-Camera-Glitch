@@ -6,57 +6,61 @@ import android.view.MotionEvent;
 
 KetaiGesture gesture;
 KetaiCamera cam;
-KetaiList selectionlist;
-ArrayList<String> optionslist = new ArrayList<String>();
+KetaiList selectionList;
+ArrayList<String> optionsList = new ArrayList<String>();
 
 void setup() {
   orientation(LANDSCAPE);
   cam = new KetaiCamera(this, displayWidth, displayHeight, 30);
   gesture = new KetaiGesture(this);
 
-  optionslist.add("Flash");
-  optionslist.add("Toggle Camera On/off");
-  optionslist.add("About");
+  optionsList.add("Flash");
+  optionsList.add("Toggle Camera On/Off");
+  optionsList.add("About");
 
   thread("alt1");
   thread("alt2");
-  thread("saveFrame");
   //cam.start();
 }
-int alt=1;
-int alt1inst=2;
-int alt2inst=2;
+int mode=3;
+int mode1inst=2;
+int mode2inst=2;
+int mode3inst=2;
 void draw() {
-  switch(alt) {
+  switch(mode) {
   case 1:
-    alt1(alt1inst);
+    mode1(mode1inst);
     break;
   case 2:
-    alt2(alt2inst);
+    mode2(mode2inst);
+    break;
+  case 3:
+    mode3(mode2inst);
     break;
   }
 }
 void onLongPress(float x, float y)
 {
-  alt=(int)random(1, 3);
-  alt1inst=(int)random(13);
-  alt2inst=(int)random(1000, 10000);
+  mode=(int)random(1, 4);
+  mode1inst=(int)random(13);
+  mode2inst=(int)random(1000, 5000);
   println("CHANGEH");
 }
 int s;
-void onTap(float x, float y){
-  saveFrame("//sdcard//DCIM/Test/"+s+++".png");
+void onTap(float x, float y) {
+  save("//sdcard//DCIM/Test/"+s+++".png");
 }
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == MENU) {
-      selectionlist = new KetaiList(this, optionslist);
+      selectionList = new KetaiList(this, optionsList);
     }
   }
 }
 void onKetaiListSelection(KetaiList klist)
 {
   String selection = klist.getSelection();
+
   if (selection == "Flash") {
     if (cam.isFlashEnabled()) {
       cam.disableFlash();
@@ -65,7 +69,7 @@ void onKetaiListSelection(KetaiList klist)
       cam.enableFlash();
     }
   }
-  else if (selection == "Toggle Camera On/off") {
+  else if (selection == "Toggle Camera On/Off") {
     if (cam.isStarted())
     {
       cam.stop();
@@ -78,17 +82,14 @@ void onKetaiListSelection(KetaiList klist)
     text("Rufael Negash", 0, 0);
   }
 }
-
+//Keep screen from sleeping
 void onCreate(Bundle bundle) {
   super.onCreate(bundle);
   getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 }
+
 public boolean surfaceTouchEvent(MotionEvent event) {
-
-  //call to keep mouseX, mouseY, etc updated
   super.surfaceTouchEvent(event);
-
-  //forward event to class for processing
   return gesture.surfaceTouchEvent(event);
 }
 void onPause() {
