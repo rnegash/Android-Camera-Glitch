@@ -1,15 +1,4 @@
-/**
- * <p>Ketai Sensor Library for Android: http://KetaiProject.org</p>
- *
- * <p>Ketai Camera Features:
- * <ul>
- * <li>Interface for built-in camera</li>
- * <li></li>
- * </ul>
- * <p>Updated: 2012-03-10 Daniel Sauter/j.duran</p>
- */
-//import android.os.Build;
-//import android.os.Bundle;
+
 import android.view.WindowManager;
 import ketai.camera.*;
 import ketai.ui.*;
@@ -59,7 +48,6 @@ int s;
 void onTap(float x, float y){
   saveFrame("//sdcard//DCIM/Test/"+s+++".png");
 }
-
 void keyPressed() {
   if (key == CODED) {
     if (keyCode == MENU) {
