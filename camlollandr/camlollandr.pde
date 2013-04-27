@@ -1,4 +1,3 @@
-
 import android.view.WindowManager;
 import ketai.camera.*;
 import ketai.ui.*;
