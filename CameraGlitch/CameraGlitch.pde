@@ -11,7 +11,7 @@ ArrayList<String> optionsList = new ArrayList<String>();
 
 void setup() {
   orientation(LANDSCAPE);
-  cam = new KetaiCamera(this, displayWidth, displayHeight, 30);
+  cam = new KetaiCamera(this, displayWidth, displayHeight, 20);
   gesture = new KetaiGesture(this);
 
   optionsList.add("Flash");
@@ -28,6 +28,7 @@ int mode1inst=2;
 int mode2inst=2;
 int mode3inst=2;
 void draw() {
+  image(cam, 0, 0);
   switch(mode) {
   case 1:
     mode1(mode1inst);
@@ -58,8 +59,7 @@ void keyPressed() {
     }
   }
 }
-void onKetaiListSelection(KetaiList klist)
-{
+void onKetaiListSelection(KetaiList klist) {
   String selection = klist.getSelection();
 
   if (selection == "Flash") {

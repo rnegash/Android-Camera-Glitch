@@ -1,5 +1,4 @@
 public void mode1(int avs) {
-  image(cam, 0, 0);
   loadPixels();
   for (int i = 0; i < (displayWidth*displayHeight) ;i+=1) {
     int ran=(int)random(i-avs, i+avs);
@@ -26,9 +25,10 @@ public void mode1(int avs) {
   }
   updatePixels();
 }
+
 public void mode2(int avs) {
-  image(cam, 0, 0);
   loadPixels();
+
   for (int i = 0; i < (displayWidth*displayHeight) ;i+=1) {
     if (i%3==0) {
       pixels[i] = pixels[i]-avs/2;
@@ -45,8 +45,8 @@ public void mode2(int avs) {
   }
   updatePixels();
 }
+
 public void mode3(int avs) {
-  image(cam, 0, 0);
   loadPixels();
   for (int i = 0; i < (displayWidth*displayHeight) ;i+=1) {
     if (i%2==0) { 
@@ -78,4 +78,3 @@ public void mode3(int avs) {
   }
   updatePixels();
 }
-
